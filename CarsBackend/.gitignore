@@ -1,0 +1,59 @@
+# Maven target directory
+target/
+
+# Logs
+*.log
+logs/
+*.log.*
+*.log.*
+
+# Eclipse specific files
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA specific files
+.idea/
+*.iml
+*.iws
+
+# VS Code specific files
+.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Maven Wrapper files
+.mvn/wrapper/maven-wrapper.jar
+!mvnw
+!mvnw.cmd
+!**/.mvn/wrapper/maven-wrapper.properties
+
+# Docker-specific
+**/docker-compose.override.yml
+.dockerignore
+
+# Spring Boot specific
+**/application.properties
+**/application-dev.properties
+**/application-prod.properties
+
+# Database files (MySQL data)
+carData/
+
+# Environment variables
+.env
+.env.*
+
+# Binary files, executables, and temporary files
+*.exe
+*.dll
+*.out
+*.class
+*.war
+*.jar
+*.tmp
+*.swp
+*.swo
+*~

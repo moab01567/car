@@ -1,0 +1,107 @@
+//the structure we get from backend
+[
+  {
+    "optionId": 2,
+    "optionName": "TOYOTA HILUX"
+  },
+  {
+    "optionId": 1,
+    "optionName": "TOYOTA LAND CRUISER"
+  }
+]
+
+
+
+//the structure we need
+[
+  {
+    "urlParameter": "carType",
+    "filterType": "carType",
+    "filterName": "Car Type",
+    "filterOptions": [
+      {
+        "optionId": 2,
+        "optionName": "TOYOTA HILUX"
+      },
+      {
+        "optionId": 1,
+        "optionName": "TOYOTA LAND CRUISER"
+      }
+    ]
+  },
+  {
+    "urlParameter": "carFuel",
+    "filterType": "carFuel",
+    "filterName": "Car Fuel",
+    "filterOptions": [
+      {
+        "optionId": 1,
+        "optionName": "Bensin"
+      },
+      {
+        "optionId": 4,
+        "optionName": "Biodiesel"
+      },
+      {
+        "optionId": 2,
+        "optionName": "Diesel"
+      },
+      {
+        "optionId": 5,
+        "optionName": "Diesel og Biodiesel"
+      },
+      {
+        "optionId": 3,
+        "optionName": "Parafin"
+      }
+    ]
+  },
+  {
+    "urlParameter": "carStatus",
+    "filterType": "carStatus",
+    "filterName": "Car Status",
+    "filterOptions": [
+      {
+        "optionId": 4,
+        "optionName": "Avregistrert"
+      },
+      {
+        "optionId": 3,
+        "optionName": "Eksportert"
+      },
+      {
+        "optionId": 1,
+        "optionName": "Registrert"
+      },
+      {
+        "optionId": 2,
+        "optionName": "Vraket"
+      }
+    ]
+  },
+  {
+    "urlParameter": "handleStatus",
+    "filterType": "handleStatus",
+    "filterName": "Car Handle Status",
+    "filterOptions": [
+      {
+        "optionId": 3,
+        "optionName": "check follow-up date"
+      },
+      {
+        "optionId": 4,
+        "optionName": "kjøp"
+      },
+      {
+        "optionId": 1,
+        "optionName": "venter gjennomgang"
+      },
+      {
+        "optionId": 2,
+        "optionName": "venter selger svar"
+      }
+    ]
+  }
+]
+
+

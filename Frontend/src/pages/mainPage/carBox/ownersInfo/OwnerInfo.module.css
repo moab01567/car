@@ -1,0 +1,25 @@
+.mainOwnerBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ownerBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.allOwnersBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.allOwners{
+    margin: 10px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}

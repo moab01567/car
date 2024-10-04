@@ -1,0 +1,38 @@
+services:
+  spring:
+    image: openjdk:17-alpine
+    command: "./mvnw  spring-boot:run"
+    working_dir: /app
+    volumes:
+      - ./:/app
+    #image: moh080203/car-backend:1.0.0
+    container_name: springContainer
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - DB_URL=jdbc:mysql://database:3306/CarDataBase
+      - DB_USER=root
+      - DB_PASSWORD=${DB_PASSWORD}
+
+  database:
+    image: mysql:8.0.39
+    restart: always
+    container_name: mysqlContainer
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: CarDataBase
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./carData:/var/lib/mysql
+  nginx:
+    image: nginx:1.27
+    container_name: nginxContainer
+    volumes:
+      - /home/mohemmed_ar2003/nginx/nginx_conf:/etc/nginx/conf.d   # Din nginx-konfigurasjon
+      - /etc/letsencrypt:/etc/letsencrypt  # Sertifikatene fra Certbot
+      - /home/mohemmed_ar2003/static/carSite/dist:/usr/share/nginx/html
+    ports:
+      - "80:80"
+      - "443:443"

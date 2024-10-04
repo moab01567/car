@@ -1,0 +1,27 @@
+
+.mainDiv{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+    width: 90%;
+    min-width: 300px;
+    flex-direction: column;
+    border: solid 7px;
+    border-radius: 10px;
+    background: #f3f3f3;
+}
+.mainDivH2{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+.carDiv{
+    display: flex;
+    justify-content: stretch;
+    flex-direction: column;
+}
+
