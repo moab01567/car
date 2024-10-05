@@ -23,7 +23,8 @@ COPY --from=frontend-build /frontend/dist /backend/src/main/resources/static
 
 RUN ./mvnw clean install
 
-COPY /backend/target/**.jar app.jar
+#COPY /backend/target/**.jar app.jar
+RUN cp /backend/target/*.jar /app/app.jar
 
 # Eksponer porten som Spring Boot-applikasjonen lytter på (som standard er det 8080)
 EXPOSE 8080
