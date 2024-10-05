@@ -89,7 +89,7 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+../CarsBackend/src/main/resources/templates/dist
 
 # Gatsby files
 .cache/
@@ -138,7 +138,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Vite build output
-dist/
+../CarsBackend/src/main/resources/templates/dist/
 
 # Local environment settings
 .env

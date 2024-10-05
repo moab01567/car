@@ -9,6 +9,7 @@ import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
@@ -22,7 +23,9 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.security.web.authentication.AuthenticationFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.resource.VersionResourceResolver;
 import site.mohememd.CarsBackend.auth.JWTFailureHandler;
 import site.mohememd.CarsBackend.auth.JwtAuthFilter;
 import site.mohememd.CarsBackend.auth.JwtAuthenticationProvider;
@@ -34,10 +37,14 @@ import java.util.Collections;
 @EnableWebSecurity
 public class webConfig implements WebMvcConfigurer {
 
+    @Bean
+    public WebSecurityCustomizer configureWebSecurity() {
+        return (web) -> web.ignoring().requestMatchers("/index.html","/assets/**");
+    }
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:5173")
+                .allowedOrigins("http://localhost:8080")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
@@ -49,7 +56,7 @@ public class webConfig implements WebMvcConfigurer {
             .cors(c -> c.configure(http))
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests((authorize)-> authorize
-            .requestMatchers("auth/login").permitAll()
+            .requestMatchers("/auth/login","/","/login","/main").permitAll()
             .anyRequest().hasAnyRole("USER"))
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(new JWTFailureHandler()))
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

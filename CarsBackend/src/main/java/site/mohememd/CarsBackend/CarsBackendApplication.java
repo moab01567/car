@@ -13,5 +13,4 @@ public class CarsBackendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CarsBackendApplication.class, args);
 	}
-
 }

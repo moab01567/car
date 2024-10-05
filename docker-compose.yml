@@ -1,0 +1,15 @@
+services:
+  spring:
+    image: openjdk:17-alpine
+    command: "./mvnw spring-boot:run"  # Kjør Maven Wrapper fra root av CarsBackend
+    working_dir: /app/CarsBackend       # Sett riktig arbeidskatalog for mvnw
+    volumes:
+      - ./CarsBackend:/app/CarsBackend  # Mapper CarsBackend-mappen til containeren
+    container_name: springContainer
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - DB_URL=jdbc:mysql://database:3306/CarDataBase
+      - DB_USER=root
+      - DB_PASSWORD=${DB_PASSWORD}
