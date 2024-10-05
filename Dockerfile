@@ -23,7 +23,7 @@ COPY --from=frontend-build /frontend/dist /backend/src/main/resources/static
 
 RUN ./mvnw clean install
 
-COPY CarsBackend/target/CarsBackend-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=backend-build /backend/target/CarsBackend-0.0.1-SNAPSHOT.jar app.jar
 
 # Eksponer porten som Spring Boot-applikasjonen lytter på (som standard er det 8080)
 EXPOSE 8080
