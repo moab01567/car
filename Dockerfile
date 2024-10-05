@@ -9,7 +9,6 @@ RUN npm install
 #buliding the html,css ans js files
 RUN npm run build
 
-
 # Bruk en base image med Java (OpenJDK)
 FROM openjdk:17-jdk-alpine AS backend-build
 
@@ -24,7 +23,7 @@ COPY --from=frontend-build /frontend/dist /backend/src/main/resources/static
 RUN ./mvnw clean install
 
 #COPY /backend/target/**.jar app.jar
-RUN cp /backend/target/*.jar /app/app.jar
+RUN cp /backend/target/*.jar /backend/app.jar
 
 # Eksponer porten som Spring Boot-applikasjonen lytter på (som standard er det 8080)
 EXPOSE 8080
