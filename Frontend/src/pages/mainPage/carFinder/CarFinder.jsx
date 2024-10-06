@@ -7,14 +7,19 @@ import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import MainPageStyle from "../MainPage.module.css";
 import Button from "@mui/material/Button";
+import {LoadingIndicator} from "../../../components/LoadingIndicator.jsx";
 
 
 export function CarFinder({setSelectedFilterOptions, setSearchFilterValue}){
     const [filters,setFilters] = useState([])
+    const [loading,setLoading] = useState(false)
 
     useEffect(()=> {
         async function getFilterData(){
+            setLoading(true)
+            setFilters([])
             setFilters(await FilterDataTransformer())
+            setLoading(false)
         }
         getFilterData()
         setSelectedFilterOptions(oldSate=>({...oldSate,["carFrom"]:""}))
@@ -27,6 +32,8 @@ export function CarFinder({setSelectedFilterOptions, setSearchFilterValue}){
     },[])
 
     return <div>
+        {loading ? <LoadingIndicator></LoadingIndicator> : ""}
+
         {filters.map(filter =>(
             <FilterSelector  key={filter.filterType}
                              filter={filter}
@@ -47,7 +54,6 @@ export function CarFinder({setSelectedFilterOptions, setSearchFilterValue}){
                             setSelectedFilterOptions((oldState)=>
                                 ({...oldState, ["carTo"] : newValue===null ? "" : `${newValue['$y']}-${newValue['$M']+1}-${newValue['$D']}`}) )}
                         label={"car To"}  />
-
         </LocalizationProvider>
 
         <LocalizationProvider  dateAdapter={AdapterDayjs} adapterLocale="de">
