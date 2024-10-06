@@ -3,10 +3,8 @@ import React, { useEffect, useState } from "react";
 import { RequestCarTransformer } from "../../../../Service/requestCar/RequestCarTransformer";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
-import MainPageStyle from "../../MainPage.module.css";
 import {FormControl, InputLabel, Select, MenuItem} from '@mui/material/';
 import 'dayjs/locale/de';
-import {FilterSelector} from "../../carFinder/FilterSelector";
 import {FilterDataApi} from "../../../../Service/requestFilterData/FilterDataApi";
 import {UpdateHandleStatusApi} from "../../../../Service/requestUpdateHandleStatus/UpdateHandleStatusApi";
 import dayjs from 'dayjs';
@@ -15,7 +13,7 @@ import {UpdateFollowUpApi} from "../../../../Service/requestUpdateHandleStatus/U
 export function CarInfo({ carDetails, setCarDetails }) {
     const [handStatusOptions,setHandStatusOptions] = useState([])
 
-    async function handleOnChanegHandStatusOptions(handleStatusId){
+    async function handleOnChangeHandStatusOptions(handleStatusId){
        const response = await UpdateHandleStatusApi("handStatus",carDetails.carID, handleStatusId)
         const carDetailsData = await RequestCarTransformer(carDetails.carID);
         console.log(carDetailsData);
@@ -25,7 +23,7 @@ export function CarInfo({ carDetails, setCarDetails }) {
     async function handleOnChangeFollowUpDate(followUpDate){
         console.log(followUpDate)
         if (followUpDate !== null){
-            followUpDate = `${followUpDate["$y"]}-${followUpDate["$M"]}-${followUpDate["$D"]}`
+            followUpDate = `${followUpDate["$y"]}-${followUpDate["$M"] + 1}-${followUpDate["$D"]}`
         }
         const response = await UpdateFollowUpApi(carDetails.carID, followUpDate)
         const carDetailsData = await RequestCarTransformer(carDetails.carID);
@@ -70,12 +68,13 @@ export function CarInfo({ carDetails, setCarDetails }) {
                     id="demo-simple-select"
                     value={carDetails.handleStatusId}
                     label="handle Status"
-                    onChange={(event) => handleOnChanegHandStatusOptions(event.target.value)}>
+                    onChange={(event) => handleOnChangeHandStatusOptions(event.target.value)}>
                     {handStatusOptions.map((option) => (
                             <MenuItem key={option.optionId} value={option.optionId}>{option.optionName}</MenuItem>
                         )
                     )}
                 </Select>
+
             </FormControl>
                 <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="de">
                     <DatePicker value={carDetails.followUp ? dayjs(carDetails.followUp) : carDetails.followUp}
@@ -84,6 +83,7 @@ export function CarInfo({ carDetails, setCarDetails }) {
                     />
                 </LocalizationProvider>
             </>) : (<p>Loading...</p>)}
+
 
             <a href={"https://regnr.1881.no/" + carDetails.reg} target="_blank" rel="noopener noreferrer">
                 <button className={CarBoxStyle.carInfoButton}>Bil 1881</button>
