@@ -26,9 +26,12 @@ public class CarFilterService {
 
             case "handleStatus" -> filterOptions =  carFilterRepository.selectAvailableOptions(CarFilterRepository.selectAllHandleStatus,
                     (rw,num)-> new CarHandleStatus(rw.getInt(1),rw.getString(2)));
+
             case "transmission" -> filterOptions =  carFilterRepository.selectAvailableOptions(CarFilterRepository.selectAllTransmission,
                     (rw,num)-> new CarHandleStatus(rw.getInt(1),rw.getString(2)));
+
             case "carSeats" -> filterOptions = getCarSeats();
+
             default -> filterOptions = new ArrayList<>();
         }
 
@@ -37,8 +40,8 @@ public class CarFilterService {
 
     private ArrayList<CarSeat> getCarSeats() {
         ArrayList<CarSeat> carSeats = new ArrayList<>();
-        for (int i = 0; i < 9 ; i++) {
-            carSeats.add(new CarSeat(i,(i+1)+""));
+        for (int i = 1; i <= 9; i++) {
+            carSeats.add(new CarSeat(i,(i)+""));
         }
         return carSeats;
     }
