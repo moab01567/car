@@ -91,9 +91,6 @@ export function CarInfo({ carDetails, setCarDetails }) {
             <a href={"https://www.vegvesen.no/dinside/kjoretoy/finn-eier-og-kjoretoyopplysninger#/finn-eier-og-kjoretoyopplysninger?kjennemerke=" + carDetails.reg} target="_blank" rel="noopener noreferrer">
                 <button className={CarBoxStyle.carInfoButton}>Bil Vegvesen</button>
             </a>
-            <button className={CarBoxStyle.carInfoButton} onClick={() => navigator.clipboard.writeText(JSON.stringify(carDetails).replaceAll(",", "\n"))}>Copy
-                car Info
-            </button>
         </div>
     );
 }
