@@ -25,6 +25,7 @@ public class CarSelectionsRepository {
             "LEFT JOIN CarFuel as cf on cf.carFuelID = c.fuelID\n" +
             "LEFT JOIN CarStatus as cs on cs.carStatusID = c.statusID\n" +
             "LEFT JOIN HandleStatus as h on h.handleStatusID = c.handleStatusID\n";
+
     private String personSQLQuery = "SELECT o.carID,p.tlf,p.pName, p.sted, p.contacted2 \n" +
             "FROM CarDataBase.Owners as o\n" +
             "JOIN Person as p on p.tlf = o.tlf\n" +
@@ -32,7 +33,7 @@ public class CarSelectionsRepository {
 
 
     private String buildSQLQuery(CarSelections carSelections){
-        if (carSelections.getConcatenateLists().isEmpty())return baseSQLQuery;
+        if (carSelections.getConcatenateLists().isEmpty()) return baseSQLQuery;
 
         String SqlQueryWithAddedWhereClause = baseSQLQuery +"WHERE "+
             addAttributeToWhereClause("ct.carTypeID", carSelections.getCarTypeIds()) +

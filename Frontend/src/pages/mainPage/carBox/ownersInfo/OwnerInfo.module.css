@@ -23,3 +23,8 @@
     text-align: center;
     flex-direction: column;
 }
+
+.button{
+    cursor: pointer;
+    margin: 5px;
+}

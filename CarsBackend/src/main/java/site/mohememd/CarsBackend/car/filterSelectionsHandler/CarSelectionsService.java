@@ -9,6 +9,7 @@ import java.util.List;
 public class CarSelectionsService {
     @Autowired
     CarSelectionsRepository carSelectionsRepository;
+
     public List<CarReg> getAllRegNumbersBySelections(CarSelections carSelections){
         return carSelectionsRepository.selectCarsRegByOptions(carSelections);
     }
