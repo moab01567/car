@@ -7,8 +7,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import site.mohememd.CarsBackend.Message;
-import site.mohememd.CarsBackend.car.Car;
-import site.mohememd.CarsBackend.car.Person;
 import site.mohememd.CarsBackend.exceptions.SomethingIsWrongWithDatabase;
 
 import java.util.List;
@@ -16,8 +14,12 @@ import java.util.List;
 @Repository
 public class CarOwnersRepository {
 
+    private final JdbcTemplate jdbcTemplate;
+
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    public CarOwnersRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Transactional
     public Message insertOwner(CarOwner carOwner){
