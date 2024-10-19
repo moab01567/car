@@ -36,7 +36,7 @@ public class FilterAndSelectionRestController {
             @RequestParam(value="transmissionIds", required = false) List<Integer> transmissionIds,
             @RequestParam(value="carFrom", required = false,defaultValue = "") String carFrom,
             @RequestParam(value="carTo", required = false ,defaultValue = "") String carTo,
-            @RequestParam(value="euFRom", required = false,defaultValue = "") String euFrom,
+            @RequestParam(value="euFrom", required = false,defaultValue = "") String euFrom,
             @RequestParam(value="euTo", required = false,defaultValue = "") String euTo) {
 
         List<CarReg> carRegs = carSelectionsService.getAllRegNumbersBySelections(new CarSelections(carTypesIds,transmissionIds,carFuelIds,carStatusIds,handleStatusIds,carSeatsIds,carFrom,carTo,euFrom,euTo));
