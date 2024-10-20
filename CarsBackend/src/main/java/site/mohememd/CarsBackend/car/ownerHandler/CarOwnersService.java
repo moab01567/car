@@ -3,6 +3,7 @@ package site.mohememd.CarsBackend.car.ownerHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import site.mohememd.CarsBackend.Message;
+import site.mohememd.CarsBackend.repository.CarOwnerRepository;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class CarOwnersService {
     private final CarOwnersRepository carOwnersRepository;
 
     @Autowired
-    public CarOwnersService(CarOwnersRepository carOwnersRepository) {
+    public CarOwnersService(CarOwnersRepository carOwnersRepository, CarOwnerRepository carOwnersRepository2) {
         this.carOwnersRepository = carOwnersRepository;
     }
 
@@ -26,7 +27,6 @@ public class CarOwnersService {
     public Message addNewPersonAndGetTheCurrentCarAndOwners(CarOwner carOwner){
         System.out.println(carOwner);
         return carOwnersRepository.insertOwner(carOwner);
-
-
     }
+
 }

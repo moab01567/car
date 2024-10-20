@@ -29,6 +29,8 @@ public class CarRestController {
     CarEditService carEditService;
 
 
+
+
     @GetMapping("/details/{carId}")
     public ResponseEntity<?> getCarDetailsByCarId(@PathVariable int carId){
         System.out.println(carId);
