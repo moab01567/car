@@ -26,6 +26,7 @@ public class FilterAndSelectionRestController {
         return new ResponseEntity<>(filterOptions, HttpStatus.OK);
     }
 
+
     @GetMapping("/selected-options/v2")
     public ResponseEntity<?> selectedOptionsV2(
             @RequestParam(value="carTypesIds", required = false) List<Integer> carTypesIds,
