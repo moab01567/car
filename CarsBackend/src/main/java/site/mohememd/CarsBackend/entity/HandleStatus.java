@@ -17,4 +17,6 @@ public class HandleStatus {
 
     @Column(name = "handleName")
     private String handleName;
+
+
 }

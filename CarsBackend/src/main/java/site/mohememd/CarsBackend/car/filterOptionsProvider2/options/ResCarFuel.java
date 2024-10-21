@@ -1,7 +1,7 @@
 package site.mohememd.CarsBackend.car.filterOptionsProvider2.options;
 
-public class CarFuel extends CarOption {
-    public CarFuel(int optionId, String optionName) {
+public class ResCarFuel extends CarOption {
+    public ResCarFuel(int optionId, String optionName) {
         super(optionId, optionName);
     }
 }

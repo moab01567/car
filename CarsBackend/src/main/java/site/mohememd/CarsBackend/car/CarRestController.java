@@ -7,15 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import site.mohememd.CarsBackend.Message;
 import site.mohememd.CarsBackend.car.carEdit.CarEditService;
 import site.mohememd.CarsBackend.car.carProvider.CarProviderService;
-import site.mohememd.CarsBackend.car.filterOptionsProvider2.CarFilterService;
-import site.mohememd.CarsBackend.car.filterSelectionsHandler.CarSelectionsService;
-import site.mohememd.CarsBackend.car.filterSelectionsHandler.CarSelections;
-import site.mohememd.CarsBackend.car.filterSelectionsHandler.CarReg;
-import site.mohememd.CarsBackend.car.ownerHandler.CarOwner;
-import site.mohememd.CarsBackend.car.ownerHandler.CarOwnersService;
-import site.mohememd.CarsBackend.exceptions.SomethingIsWrongWithDatabase;
 
-import java.util.List;
 
 @RequestMapping("/api/car")
 @RestController
@@ -27,9 +19,6 @@ public class CarRestController {
 
     @Autowired
     CarEditService carEditService;
-
-
-
 
     @GetMapping("/details/{carId}")
     public ResponseEntity<?> getCarDetailsByCarId(@PathVariable int carId){
