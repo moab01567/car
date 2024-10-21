@@ -16,16 +16,4 @@ class CarsBackendApplicationTests {
 	void contextLoads() {
 	}
 
-
-	@Test
-	void selectedOptionsTest(){
-		CarRestController carRestController= new CarRestController();
-		ArrayList<Integer> carIds = new ArrayList<>();
-		carIds.add(1);
-		ArrayList<Integer> carIds2 = new ArrayList<>();
-
-		ArrayList<String> date = new ArrayList<>();
-
-
-	}
 }
