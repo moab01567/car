@@ -13,6 +13,5 @@ spring:
     username: ${DB_USER}
     password: ${DB_PASSWORD}
     url: ${DB_URL}
-
 server:
   port: ${PORT}
