@@ -20,13 +20,15 @@ COPY ./CarsBackend ./
 
 COPY --from=frontend-build /frontend/dist /backend/src/main/resources/static
 
+RUN apk update && \
+    apk add --no-cache dos2unix && \
+    dos2unix mvnw && \
+    chmod +x mvnw
+
 RUN ./mvnw clean install
 
 #COPY /backend/target/**.jar app.jar
 RUN cp /backend/target/*.jar /backend/app.jar
-
-# Eksponer porten som Spring Boot-applikasjonen lytter på (som standard er det 8080)
-EXPOSE 8080
 
 # Kommandoen for å starte Spring Boot-applikasjonen
 ENTRYPOINT ["java", "-jar", "app.jar"]
