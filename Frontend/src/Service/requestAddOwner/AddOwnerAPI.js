@@ -1,7 +1,8 @@
+import {REST_API_URL} from "../../config.js";
 
 
 export async function AddOwnerAPI(carId, tlf, name, place, contacted){
-    const request = new Request(`/api/car/owner/add?carId=${carId}&ownerTlf=${tlf}&ownerName=${name}&place=${place}&contacted=${contacted}`,{
+    const request = new Request(`${REST_API_URL}/api/car/owner/add?carId=${carId}&ownerTlf=${tlf}&ownerName=${name}&place=${place}&contacted=${contacted}`,{
         method:"PUT",
         headers:{
             "Content-Type":"application/json",

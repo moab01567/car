@@ -1,7 +1,8 @@
+import {REST_API_URL} from "../../config.js";
 
 
 export async function UpdateHandleStatusApi(updateType,carId,handleStatusId){
-    const request = new Request(`/api/car/update/carInfo?carId=${carId}&value=${handleStatusId}&updateType=${updateType}`,{
+    const request = new Request(`${REST_API_URL}/api/car/update/carInfo?carId=${carId}&value=${handleStatusId}&updateType=${updateType}`,{
         method:"put",
         headers:{
             "Content-Type":"application/json",

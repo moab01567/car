@@ -1,7 +1,8 @@
+import {REST_API_URL} from "../../config.js";
 
 
 export async function ValidToken(){
-    const request = new Request("/auth/validate/token", {
+    const request = new Request(REST_API_URL+"/auth/validate/token", {
         method:"GET",
         headers: {'Content-Type': 'application/json',
                     "Authorization": `Bearer ${sessionStorage.getItem("AMS Token")}`}

@@ -1,6 +1,7 @@
+import {REST_API_URL} from "../../config.js";
 
 export async function RequestCarsRegBySelectionsApi(selectedFilterOptions){
-    const url = `/api/car/selected-options/v2?carTypesIds=${selectedFilterOptions.carType.toString()}&carFuelIds=${selectedFilterOptions.carFuel.toString()}&carStatusIds=${selectedFilterOptions.carStatus.toString()}&handleStatusIds=${selectedFilterOptions.handleStatus.toString()}&carSeatsIds=${selectedFilterOptions.carSeats.toString()}&transmissionIds=${selectedFilterOptions.carTransmission.toString()}&carFrom=${selectedFilterOptions.carFrom}&carTo=${selectedFilterOptions.carTo}&euFrom=${selectedFilterOptions.euFrom}&euTo=${selectedFilterOptions.euTo}`
+    const url = `${REST_API_URL}/api/car/selected-options/v2?carTypesIds=${selectedFilterOptions.carType.toString()}&carFuelIds=${selectedFilterOptions.carFuel.toString()}&carStatusIds=${selectedFilterOptions.carStatus.toString()}&handleStatusIds=${selectedFilterOptions.handleStatus.toString()}&carSeatsIds=${selectedFilterOptions.carSeats.toString()}&transmissionIds=${selectedFilterOptions.carTransmission.toString()}&carFrom=${selectedFilterOptions.carFrom}&carTo=${selectedFilterOptions.carTo}&euFrom=${selectedFilterOptions.euFrom}&euTo=${selectedFilterOptions.euTo}`
 
     const request = new Request(url, {
         method: "GET",  // Endret til GET hvis hensikten er å hente data

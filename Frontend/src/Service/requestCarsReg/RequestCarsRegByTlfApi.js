@@ -1,6 +1,7 @@
+import {REST_API_URL} from "../../config.js";
 
 export async function RequestCarsRegByTlfApi(selectedFilterOptions){
-    const url = `/api/car/tlf/selections/${selectedFilterOptions.tlf}`
+    const url = `${REST_API_URL}/api/car/tlf/selections/${selectedFilterOptions.tlf}`
 
     const request = new Request(url, {
         method: "GET",  // Endret til GET hvis hensikten er å hente data

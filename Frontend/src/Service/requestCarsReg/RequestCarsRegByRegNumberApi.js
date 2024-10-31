@@ -1,6 +1,7 @@
+import {REST_API_URL} from "../../config.js";
 
 export async function RequestCarsRegByRegNumberApi(selectedFilterOptions){
-    const url = `/api/car/reg/selections/${selectedFilterOptions.reg}`
+    const url = `${REST_API_URL}/api/car/reg/selections/${selectedFilterOptions.reg}`
     const request = new Request(url, {
         method: "GET",  // Endret til GET hvis hensikten er å hente data
         headers: {

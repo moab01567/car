@@ -24,14 +24,10 @@ import site.mohememd.CarsBackend.auth.JwtAuthFilter;
 @EnableWebSecurity
 public class webConfig implements WebMvcConfigurer {
 
-    @Bean
-    public WebSecurityCustomizer configureWebSecurity() {
-        return (web) -> web.ignoring().requestMatchers("/index.html","/assets/**");
-    }
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:5173/")
+                .allowedOrigins(System.getenv("ALLOWED_ORIGINS")) // Din frontend-URL under utvikling
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
@@ -43,7 +39,7 @@ public class webConfig implements WebMvcConfigurer {
             .cors(c -> c.configure(http))
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests((authorize)-> authorize
-            .requestMatchers("/auth/login","/","/login","/main").permitAll()
+            .requestMatchers("/auth/login").permitAll()
             .anyRequest().hasAnyRole("USER"))
             .exceptionHandling(ex -> ex.authenticationEntryPoint(new JWTFailureHandler()))
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

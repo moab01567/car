@@ -1,7 +1,8 @@
+import {REST_API_URL} from "../../config.js";
 
 
 export async function ApiCarOwnerDelete(carID, tlf){
-    const request = new Request(`/api/car/ownerHandler/deleteOwner?carId=${carID}&tlf=${tlf}`,{
+    const request = new Request(`${REST_API_URL}/api/car/ownerHandler/deleteOwner?carId=${carID}&tlf=${tlf}`,{
         method:"DELETE",
         headers: {
             'Content-Type': 'application/json',

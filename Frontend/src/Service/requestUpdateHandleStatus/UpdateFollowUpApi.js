@@ -1,9 +1,8 @@
-
-
+import {REST_API_URL} from "../../config.js";
 
 
 export async function UpdateFollowUpApi(carId, followUpdate){
-    const request = new Request(`/api/car/update/followUpDate?carId=${carId}&followUpDate=${followUpdate}`,{
+    const request = new Request(`${REST_API_URL}/api/car/update/followUpDate?carId=${carId}&followUpDate=${followUpdate}`,{
         method:"PUT",
         headers:{
             "Content-Type":"application/json",

@@ -1,8 +1,8 @@
-
+import {REST_API_URL} from "../../config.js";
 
 
 export async function RequestCarApi(carId){
-    const request = new Request(`/api/car/details/${carId}`,{
+    const request = new Request(`${REST_API_URL}/api/car/details/${carId}`,{
         method:"GET",
         headers:{
             "Content-Type":"application/json",

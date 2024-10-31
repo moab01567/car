@@ -1,6 +1,7 @@
+import {REST_API_URL} from "../../config.js";
 
 export async function CarOptions() {
-    const request = new Request("/api/car/filter-options", {
+    const request = new Request(REST_API_URL+"/api/car/filter-options", {
         method: "GET",
         headers: {
             'Content-Type': 'application/json',
