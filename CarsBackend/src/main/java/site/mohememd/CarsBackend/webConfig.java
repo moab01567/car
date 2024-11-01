@@ -27,7 +27,7 @@ public class webConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         System.out.println("ALLOWED_ORIGINS: " + System.getenv("ALLOWED_ORIGINS"));
         registry.addMapping("/**")
-                .allowedOrigins(System.getenv("ALLOWED_ORIGINS")) // Din frontend-URL under utvikling
+                .allowedOrigins("*") // Din frontend-URL under utvikling
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
