@@ -26,7 +26,7 @@ public class webConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://moab015.no") // Din frontend-URL under utvikling
+                .allowedOrigins(System.getenv("ALLOWED_ORIGINS")) // Din frontend-URL under utvikling
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
