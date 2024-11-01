@@ -1,0 +1,5 @@
+[[redirects]]
+from = "/auth/*"
+to = "https://api.moab015.no/auth/:splat"
+status = 200
+force = true
