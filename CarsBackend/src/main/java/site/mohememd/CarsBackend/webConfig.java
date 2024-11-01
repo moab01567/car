@@ -39,7 +39,7 @@ public class webConfig implements WebMvcConfigurer {
             .cors(c -> c.configure(http))
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests((authorize)-> authorize
-            .requestMatchers("/auth/login").permitAll()
+            .requestMatchers("/auth/login","/test").permitAll()
             .anyRequest().hasAnyRole("USER"))
             .exceptionHandling(ex -> ex.authenticationEntryPoint(new JWTFailureHandler()))
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

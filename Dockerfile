@@ -17,5 +17,8 @@ RUN ./mvnw clean install
 #COPY /backend/target/**.jar app.jar
 RUN cp /backend/target/*.jar /backend/app.jar
 
+# Eksponer porten for å indikere hvilken port appen kjører på
+EXPOSE 8080
+
 # Kommandoen for å starte Spring Boot-applikasjonen
 ENTRYPOINT ["java", "-jar", "app.jar"]
