@@ -27,7 +27,7 @@ public class webConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         System.out.println("ALLOWED_ORIGINS: " + System.getenv("ALLOWED_ORIGINS"));
         registry.addMapping("/**")
-                .allowedOrigins("*") // Din frontend-URL under utvikling
+                .allowedOrigins(System.getenv("ALLOWED_ORIGINS")) // Din frontend-URL under utvikling
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
@@ -36,7 +36,7 @@ public class webConfig implements WebMvcConfigurer {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, JwtAuthFilter jwtAuthFilter) throws Exception {
         http
-            .cors(AbstractHttpConfigurer::disable)
+            .cors(c -> c.configure(http))
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests((authorize)-> authorize
             .requestMatchers("/auth/login").permitAll()
