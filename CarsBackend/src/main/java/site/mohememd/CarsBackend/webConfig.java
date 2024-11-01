@@ -36,7 +36,7 @@ public class webConfig implements WebMvcConfigurer {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, JwtAuthFilter jwtAuthFilter) throws Exception {
         http
-            .cors(c -> c.configure(http))
+            .cors(AbstractHttpConfigurer::disable)
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests((authorize)-> authorize
             .requestMatchers("/auth/login").permitAll()
