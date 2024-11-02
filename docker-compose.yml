@@ -1,17 +1,4 @@
 services:
   spring:
     image: openjdk:17-alpine
-    working_dir: /app/CarsBackend
-    command: [ "sh", "-c", "apk update && apk add --no-cache dos2unix && chmod +x mvnw && ./mvnw spring-boot:run" ]
-    volumes:
-      - ./CarsBackend:/app/CarsBackend  # Mapper CarsBackend-mappen til containeren
-      - /app/CarsBackend/target          # Opsjon for å cache bygde filer
-    container_name: springContainer
-    ports:
-      - "8080:8080"
-    environment:
-      PORT: 8080
-      SPRING_PROFILES_ACTIVE: dev
-      DB_URL: jdbc:mysql://database:3306/CarDataBase
-      DB_USER: root
-      DB_PASSWORD: ${DB_PASSWORD}
+
