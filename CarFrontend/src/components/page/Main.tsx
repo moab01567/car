@@ -1,9 +1,3 @@
-
-
-
-
-export function Main(){
-    return <div>
-
-    </div>
+export function Main() {
+  return <div></div>;
 }

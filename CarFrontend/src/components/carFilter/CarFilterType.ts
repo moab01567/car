@@ -1,5 +1,1 @@
-
-
-export interface CarFilterOptions{
-
-}
+export interface CarFilterOptions {}
