@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+
     "dev": "vite",
     "wirte_prettier": "prettier --write .",
     "test": "prettier --check .",
