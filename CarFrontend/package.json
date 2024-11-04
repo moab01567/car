@@ -7,6 +7,7 @@
     "dev": "vite",
     "wirte_prettier": "prettier --write .",
     "test": "prettier --check .",
+
     "build": "tsc -b && vite build",
     "prepare": "husky"
   },
