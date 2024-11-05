@@ -10,7 +10,7 @@ export function Login() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [failedLogin, setFailedLogin] = useState<boolean>(false);
-  const navigator = useNavigate();
+  const navigate = useNavigate();
 
   async function handleSubmit(event: any) {
     event.preventDefault();
@@ -18,10 +18,11 @@ export function Login() {
     if (response.ok) {
       const data: AuthRes = await response.json();
       sessionStorage.setItem(TOKEN_NAME, data.token);
-      navigator("/main");
+      navigate("/main");
+      setFailedLogin(false);
+    } else {
+      setFailedLogin(true);
     }
-    setFailedLogin(true);
-
     console.log(sessionStorage.getItem(TOKEN_NAME));
   }
 

@@ -1,6 +1,8 @@
 import styleCarFilter from "./CarFilter.module.css";
 import Select from "react-select";
 
+interface Props {}
+
 export function CarFilter() {
   const myData = [
     { label: "Books", value: 1 },
@@ -17,7 +19,6 @@ export function CarFilter() {
   return (
     <div className={styleCarFilter.div}>
       <h2>Toyota Land Cruiser</h2>
-
       <div className={styleCarFilter.selectDiv}>
         <h3>Seats</h3>
         <Select

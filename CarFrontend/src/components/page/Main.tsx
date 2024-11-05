@@ -1,3 +1,10 @@
+import styleMain from "./Main.module.css";
+import { CarFilters } from "../carFilter/CarFilters.tsx";
+
 export function Main() {
-  return <div></div>;
+  return (
+    <div className={styleMain.div}>
+      <CarFilters></CarFilters>
+    </div>
+  );
 }

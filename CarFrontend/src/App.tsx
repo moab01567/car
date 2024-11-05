@@ -1,38 +1,31 @@
 import "./style.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from "./components/page/Login.tsx";
-import { useEffect, useState } from "react";
-import { AuthValidator } from "./service/auth/AuthValidator.ts";
-import { CarFilter } from "./components/carFilter/CarFilter.tsx";
-import { LoadingIndicator } from "./components/loading/LoadingIndicator.tsx";
+import { useState } from "react";
+import { PrivateRouter } from "./components/page/PrivateRouter.tsx";
+import { Main } from "./components/page/Main.tsx";
 
 function App() {
   const [authenticated, setAuthenticated] = useState<boolean | null>(null);
 
-  useEffect(() => {
-    async function isAuthenticated() {
-      const response: Response = await AuthValidator();
-      if (response.ok) {
-        console.log(await response.json());
-        setAuthenticated(true);
-      }
-    }
-    isAuthenticated();
-  }, []);
-
-  if (authenticated == null) {
-    return <LoadingIndicator />;
+  function setAuthStatus(status: null | boolean) {
+    setAuthenticated(status);
   }
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/page/loading" element={<LoadingIndicator />} />
         <Route path="/login" index element={<Login />} />
-        <Route path="/*" element={authenticated ? <CarFilter /> : <Login />} />
+        <Route path="/*" element={<Login />} />
         <Route
           path="/main"
-          element={authenticated ? <CarFilter /> : <Login />}
+          element={
+            authenticated ? (
+              <Main />
+            ) : (
+              <PrivateRouter setAuthStatus={setAuthStatus} />
+            )
+          }
         />
       </Routes>
     </BrowserRouter>

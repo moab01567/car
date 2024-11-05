@@ -23,6 +23,7 @@ import site.mohememd.CarsBackend.auth.JwtAuthFilter;
 @EnableWebSecurity
 public class webConfig implements WebMvcConfigurer {
 
+
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
