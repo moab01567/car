@@ -1,10 +1,14 @@
 import styleLogin from "./Login.module.css";
 import { useState } from "react";
 import { ApiAuthLogin } from "../../service/auth/AuthLogin.ts";
-import { Massage, Token, TOKEN_NAME } from "../../service/ApiInterface.ts";
+import {
+  ResMassage,
+  ResToken,
+  TOKEN_NAME,
+} from "../../service/ApiInterface.ts";
 import { useNavigate } from "react-router-dom";
 
-type AuthRes = Massage & Token;
+type AuthRes = ResMassage & ResToken;
 
 export function Login() {
   const [username, setUsername] = useState<string>("");
