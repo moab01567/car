@@ -59,19 +59,24 @@ public class Car {
     @Column(name = "followUp",columnDefinition = "followUp")
     private Date followUp;
 
-    @Column(name = "transmissionID",columnDefinition = "transmissionID")
-    private Integer transmissionId;
+    @ManyToOne()
+    @JoinColumn(name = "transmissionID",columnDefinition = "transmissionID")
+    private Transmission transmission;
 
-    @Column(name = "statusID",columnDefinition = "statusID")
-    private Integer statusId;
+    @ManyToOne()
+    @JoinColumn(name = "statusID",columnDefinition = "statusID")
+    private CarStatus carStatus;
 
-    @Column(name = "carTypeID",columnDefinition = "carTypeID")
-    private Integer carTypeId;
+    @ManyToOne()
+    @JoinColumn(name = "carTypeID",columnDefinition = "carTypeID")
+    private CarType carType;
 
-    @Column(name = "fuelID",columnDefinition = "fuelID")
-    private Integer fuelId;
+    @ManyToOne()
+    @JoinColumn(name = "fuelID",columnDefinition = "fuelID")
+    private CarFuel carFuel;
 
-    @Column(name = "handleStatusID",columnDefinition = "handleStatusID")
-    private Integer handleStatusId;
+    @ManyToOne()
+    @JoinColumn(name = "handleStatusID",columnDefinition = "handleStatusID")
+    private HandleStatus handleStatus;
 
 }

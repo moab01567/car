@@ -1,11 +1,10 @@
 package site.mohememd.CarsBackend.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Table(name = "transmission")
@@ -17,4 +16,7 @@ public class Transmission {
 
     @Column(name = "transmissionType")
     private String transmissionType;
+
+    @OneToMany(mappedBy = "transmission")
+    private List<Car> cars;
 }
