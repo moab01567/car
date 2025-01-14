@@ -1,15 +1,13 @@
-
-.Div{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   flex-direction: column;
+.Div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.CarFilterDiv{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   flex-wrap: wrap;
+.CarFilterDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-

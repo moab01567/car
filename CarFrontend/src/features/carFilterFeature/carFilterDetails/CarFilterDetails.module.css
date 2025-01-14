@@ -1,15 +1,14 @@
-.DivCarFilterDetails{
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-wrap: wrap;
+.DivCarFilterDetails {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
 }
-.DivCarFilterSelector{
-    margin: 5px;
-    min-width: 200px;
-    width: 300px;
+.DivCarFilterSelector {
+  margin: 5px;
+  min-width: 200px;
+  width: 300px;
 }
-.DivCarFilterDate{
-    margin: 5px;
-
+.DivCarFilterDate {
+  margin: 5px;
 }
