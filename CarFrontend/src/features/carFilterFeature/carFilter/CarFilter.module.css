@@ -1,0 +1,23 @@
+.Div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    max-width: 1000px;
+    width: 90%;
+    min-width: 300px;
+    border: solid #1698c6 5px;
+    border-radius: 10px;
+}
+.DivCarFilterButton{
+    width: 100%;
+}
+
+.CarFilterCollapse{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background: #e6e5e5;
+}

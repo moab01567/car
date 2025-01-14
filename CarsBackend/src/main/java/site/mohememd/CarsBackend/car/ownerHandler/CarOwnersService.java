@@ -3,7 +3,7 @@ package site.mohememd.CarsBackend.car.ownerHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import site.mohememd.CarsBackend.Message;
-import site.mohememd.CarsBackend.repository.CarOwnerRepository;
+import site.mohememd.CarsBackend.entity.owners.CarOwnerRepository;
 
 import java.util.List;
 

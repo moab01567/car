@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import site.mohememd.CarsBackend.auth.AuthRepository;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,5 +35,14 @@ public class ExceptionHandlerAdvice {
         response.put("message","Database Error");
         System.out.println(ex.getMessage());
         return new ResponseEntity<Object>(response,HttpStatus.SERVICE_UNAVAILABLE);
+    }
+
+    @ExceptionHandler(value = FilterNotFound.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<Object> handleFilterNotFound(FilterNotFound ex){
+        Map<String,String> response = new HashMap<String,String>();
+        response.put("message", ex.getMessage());
+        System.out.println(ex.getMessage());
+        return new ResponseEntity<Object>(response,HttpStatus.NOT_FOUND);
     }
 }

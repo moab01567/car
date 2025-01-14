@@ -39,7 +39,7 @@ carData/
 # Environment variables
 .env
 .env.*
-
+ApplicationNoSecurity.java
 # Binary files, executables, and temporary files
 *.exe
 *.dll

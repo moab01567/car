@@ -4,12 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import site.mohememd.CarsBackend.Message;
-import site.mohememd.CarsBackend.entity.Car;
-import site.mohememd.CarsBackend.entity.Owners;
-import site.mohememd.CarsBackend.entity.Person;
-import site.mohememd.CarsBackend.repository.CarCarRepository;
-import site.mohememd.CarsBackend.repository.CarOwnerRepository;
-import site.mohememd.CarsBackend.repository.CarPersonRepository;
+import site.mohememd.CarsBackend.entity.car.Car;
+import site.mohememd.CarsBackend.entity.car.CarCarRepository;
+import site.mohememd.CarsBackend.entity.owners.CarOwnerRepository;
+import site.mohememd.CarsBackend.entity.owners.Owners;
+import site.mohememd.CarsBackend.entity.person.CarPersonRepository;
+import site.mohememd.CarsBackend.entity.person.Person;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -61,7 +61,5 @@ public class webConfig implements WebMvcConfigurer {
 
         return new ProviderManager(authenticationProvider);
     }
-
-
 }
 

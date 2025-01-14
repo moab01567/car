@@ -7,7 +7,7 @@ spring:
       ddl-auto: none
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    show-sql: true
+   # show-sql: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${DB_USER}
@@ -15,8 +15,8 @@ spring:
     url: ${DB_URL}
 server:
   port: ${PORT}
-logging:
-  level:
-    org.flywaydb: DEBUG
-    org.springframework.boot.autoconfigure.flyway: DEBUG
+#logging:
+#  level:
+#    org.flywaydb: DEBUG
+#    org.springframework.boot.autoconfigure.flyway: DEBUG
 

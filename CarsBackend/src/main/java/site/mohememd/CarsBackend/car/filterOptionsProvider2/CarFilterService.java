@@ -4,8 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 import site.mohememd.CarsBackend.car.filterOptionsProvider2.options.*;
-import site.mohememd.CarsBackend.entity.*;
-import site.mohememd.CarsBackend.repository.*;
+import site.mohememd.CarsBackend.entity.carFuel.CarFuel;
+import site.mohememd.CarsBackend.entity.carFuel.CarFuelRepository;
+import site.mohememd.CarsBackend.entity.carStatus.CarStatus;
+import site.mohememd.CarsBackend.entity.carStatus.CarStatusRepository;
+import site.mohememd.CarsBackend.entity.carType.CarType;
+import site.mohememd.CarsBackend.entity.carType.CarTypeRepository;
+import site.mohememd.CarsBackend.entity.handleStatus.HandleStatus;
+import site.mohememd.CarsBackend.entity.handleStatus.HandleStatusRepository;
+import site.mohememd.CarsBackend.entity.transmission.Transmission;
+import site.mohememd.CarsBackend.entity.transmission.TransmissionRepository;
 
 import java.util.ArrayList;
 import java.util.List;
