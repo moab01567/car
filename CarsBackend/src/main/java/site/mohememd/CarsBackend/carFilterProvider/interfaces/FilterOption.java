@@ -1,6 +1,6 @@
 package site.mohememd.CarsBackend.carFilterProvider.interfaces;
 
-import site.mohememd.CarsBackend.carFilterProvider.DTO.FilterOptionDTO;
+import site.mohememd.CarsBackend.carFilterProvider.DTO.GET.FilterOptionDTO;
 
 import java.util.List;
 

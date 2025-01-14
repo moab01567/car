@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import site.mohememd.CarsBackend.carFilterProvider.DTO.CarAvailableDTO;
-import site.mohememd.CarsBackend.carFilterProvider.DTO.SelectFilterDTO;
+import site.mohememd.CarsBackend.carFilterProvider.DTO.GET.CarAvailableDTO;
+import site.mohememd.CarsBackend.carFilterProvider.DTO.GET.SelectFilterDTO;
 
 import java.util.List;
 @RequestMapping("/car/filter")
