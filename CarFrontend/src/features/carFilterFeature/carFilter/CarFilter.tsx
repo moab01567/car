@@ -6,7 +6,8 @@ import React, { useState } from "react";
 import Collapse from "@mui/material/Collapse";
 import { CarFilterDetails } from "../carFilterDetails/CarFilterDetails";
 
-import { CarDTO } from "../DTO/AllCarFilterDTOs";
+
+import {CarDTO} from "../DTO/CarDTO";
 
 interface Props {
   carFilter: CarDTO;

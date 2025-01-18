@@ -34,7 +34,7 @@ public class CarFilterController {
 
     @PostMapping("/options")
     public ResponseEntity<SelectedFilterOptionDTO> addCarFilter(@RequestBody List<SelectedFilterOptionDTO> selectedFilterOptionDTO){
-        return null;
+        return new ResponseEntity<SelectedFilterOptionDTO>(HttpStatus.OK);
     }
 }
 

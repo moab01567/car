@@ -102,3 +102,7 @@ export function getSelectedData(
   }
   return selectedFilter.selectedOptions;
 }
+
+export function getFilterDate(): Record<number, FilterOption>{
+  return filterData
+}

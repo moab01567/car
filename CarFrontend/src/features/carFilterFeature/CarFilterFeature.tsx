@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { CarFilter } from "./carFilter/CarFilter";
-import { APIGetAvailableCars } from "./service/CarFilterService";
+import {APIGetAvailableCars, APIPostCarFilterAndOptions} from "./service/CarFilterService";
 import CarFilterStyle from "./CarFilterFeature.module.css";
 import Button from "@mui/material/Button";
 import "./LocalStorageCarFilter";
-import { addCarToFilterData } from "./LocalStorageCarFilter";
-import { CarDTO } from "./DTO/AllCarFilterDTOs";
+import {addCarToFilterData, getFilterDate} from "./LocalStorageCarFilter";
+
+import {CarDTO} from "./DTO/CarDTO";
+import {SelectedFilterOptionDTOMapper} from "./DTO/SelectedFilterOptionDTOAndMapper";
+
+function handleFilterClick() {
+
+    APIPostCarFilterAndOptions(SelectedFilterOptionDTOMapper(getFilterDate()))
+}
 
 export function CarFilterFeature() {
   const [carFilters, setCars] = useState<CarDTO[] | null>(null);
@@ -37,7 +44,7 @@ export function CarFilterFeature() {
           <CarFilter key={carFilter.carId} carFilter={carFilter}></CarFilter>
         ))}
       </div>
-      <Button variant="contained">Filter</Button>
+      <Button onClick={handleFilterClick} variant="contained">Filter</Button>
     </div>
   );
 }

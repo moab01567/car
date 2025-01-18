@@ -5,7 +5,8 @@ import { Box, Chip, FormControl, InputLabel, MenuItem } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { getSelectedData, updateSelectedData } from "../LocalStorageCarFilter";
 import { SelectFilterCode } from "../Enum";
-import { SelectFilterDTO } from "../DTO/AllCarFilterDTOs";
+
+import {SelectFilterDTOAndMapper} from "../DTO/SelectFilterDTOAndMapper";
 
 interface Props {
   carTypeId: number;
@@ -14,12 +15,12 @@ interface Props {
 
 export function CarFilterSelector({ carTypeId, selectFilterCode }: Props) {
   const [selectedOptionsIds, setSelectedOptionsIds] = useState<number[]>([]);
-  const [selectFilter, setSelectFilter] = useState<SelectFilterDTO | null>(
+  const [selectFilter, setSelectFilter] = useState<SelectFilterDTOAndMapper | null>(
     null,
   );
 
   async function getCarFilterAndOption() {
-    const selectFilterDTO: SelectFilterDTO = await APIGetCarFilterAndOptions(
+    const selectFilterDTO: SelectFilterDTOAndMapper = await APIGetCarFilterAndOptions(
       carTypeId,
       selectFilterCode,
     );
