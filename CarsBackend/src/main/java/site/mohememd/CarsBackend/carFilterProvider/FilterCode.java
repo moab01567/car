@@ -6,4 +6,8 @@ public enum FilterCode {
     CAR_TRANSMISSION,
     HANDLE_STATUS,
     CAR_SEATS,
+    EU_FROM,
+    EU_TO,
+    REG_FROM,
+    REG_TO
 }

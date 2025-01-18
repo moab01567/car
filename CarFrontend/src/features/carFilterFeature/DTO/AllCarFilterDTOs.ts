@@ -24,6 +24,6 @@ export interface SelectedFilterOptionDTO {
   }[];
   dateFilters: {
     filterCode: DateFilterCode;
-    selectedOptions: string;
+    selectedDate: string;
   }[];
 }

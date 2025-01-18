@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import site.mohememd.CarsBackend.carFilterProvider.DTO.GET.CarAvailableDTO;
 import site.mohememd.CarsBackend.carFilterProvider.DTO.GET.SelectFilterDTO;
+import site.mohememd.CarsBackend.carFilterProvider.DTO.POST.SelectedFilterOptionDTO;
 
 import java.util.List;
 @RequestMapping("/car/filter")
@@ -32,7 +33,7 @@ public class CarFilterController {
     }
 
     @PostMapping("/options")
-    public ResponseEntity<SelectFilterDTO> addCarFilter(@RequestBody SelectFilterDTO selectFilterDTO){
+    public ResponseEntity<SelectedFilterOptionDTO> addCarFilter(@RequestBody List<SelectedFilterOptionDTO> selectedFilterOptionDTO){
         return null;
     }
 }

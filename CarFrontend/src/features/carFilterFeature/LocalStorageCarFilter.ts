@@ -11,16 +11,20 @@ export interface FilterOption {
   }[];
 }
 
+function getFilterDataKey(){
+  return StorageKey[StorageKey.FILTER_DATA]
+}
+
 const filterData: Record<number, FilterOption> =
-  localStorage.getItem(StorageKey.FILTER_DATA.toString()) != null
+  localStorage.getItem(getFilterDataKey()) != null
     ? JSON.parse(
-        localStorage.getItem(StorageKey.FILTER_DATA.toString()) as string,
+        localStorage.getItem(getFilterDataKey()) as string,
       )
     : {};
 
 function setFilterDataToLocalStorage() {
   localStorage.setItem(
-    StorageKey.FILTER_DATA.toString(),
+    getFilterDataKey(),
     JSON.stringify(filterData),
   );
 }

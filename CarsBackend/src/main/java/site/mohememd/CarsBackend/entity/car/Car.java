@@ -82,7 +82,7 @@ public class Car {
     private CarFuel carFuel;
 
     @ManyToOne()
-    @JoinColumn(name = "handleStatusID",columnDefinition = "handleStatusID")
+    @JoinColumn(name = "handleStatusID", columnDefinition = "handleStatusID")
     private HandleStatus handleStatus;
 
 }
