@@ -3,7 +3,7 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import style from "./CarFilterDetails.module.css";
 import { DateFilterCode } from "../Enum";
-import { getSelectedDate, updateSelectedDate } from "../LocalStorageCarFilter";
+import {LocalStorageCarFilter} from "../LocalStorageCarFilter";
 import dayjs, { Dayjs } from "dayjs";
 import "dayjs/locale/de";
 
@@ -17,15 +17,15 @@ export function CarFilterDate({ name, carTypeId, dateFilterCode }: Props) {
   const [date, setDate] = useState<Dayjs | null>(null);
 
   function getDateFromLocalStorageIfAvailable() {
-    const selectedDate: string = getSelectedDate(carTypeId, dateFilterCode);
+    const selectedDate: string = LocalStorageCarFilter.getSelectedDate(carTypeId, dateFilterCode);
     setDate(selectedDate.length === 0 ? null : dayjs(selectedDate));
   }
 
   function handleOnChange(date: Dayjs | null) {
     if (!date) {
-      updateSelectedDate(carTypeId, dateFilterCode, "");
+      LocalStorageCarFilter.updateSelectedDate(carTypeId, dateFilterCode, "");
     } else {
-      updateSelectedDate(carTypeId, dateFilterCode, date.format("YYYY-MM-DD"));
+      LocalStorageCarFilter.updateSelectedDate(carTypeId, dateFilterCode, date.format("YYYY-MM-DD"));
       console.log(date.format("YYYY-MM-DD"));
     }
 

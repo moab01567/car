@@ -1,9 +1,9 @@
-import { APIGetCarFilterAndOptions } from "../service/CarFilterService";
+import {FilterAPI} from "../service/CarFilterService";
 import React, { useEffect, useState } from "react";
 import style from "./CarFilterDetails.module.css";
 import { Box, Chip, FormControl, InputLabel, MenuItem } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { getSelectedData, updateSelectedData } from "../LocalStorageCarFilter";
+import {LocalStorageCarFilter} from "../LocalStorageCarFilter";
 import { SelectFilterCode } from "../Enum";
 
 import {SelectFilterDTOAndMapper} from "../DTO/SelectFilterDTOAndMapper";
@@ -20,12 +20,12 @@ export function CarFilterSelector({ carTypeId, selectFilterCode }: Props) {
   );
 
   async function getCarFilterAndOption() {
-    const selectFilterDTO: SelectFilterDTOAndMapper = await APIGetCarFilterAndOptions(
+    const selectFilterDTO: SelectFilterDTOAndMapper = await FilterAPI.APIGetCarFilterAndOptions(
       carTypeId,
       selectFilterCode,
     );
     setSelectFilter(selectFilterDTO);
-    const selectedOptionsIdsFromLocalStorage: number[] = getSelectedData(
+    const selectedOptionsIdsFromLocalStorage: number[] = LocalStorageCarFilter.getSelectedData(
       carTypeId,
       selectFilterCode,
     );
@@ -40,7 +40,7 @@ export function CarFilterSelector({ carTypeId, selectFilterCode }: Props) {
     if (!Array.isArray(event.target.value)) return;
     const selected: number[] = event.target.value;
     setSelectedOptionsIds(selected);
-    updateSelectedData(carTypeId, selectFilterCode, selected);
+    LocalStorageCarFilter.updateSelectedData(carTypeId, selectFilterCode, selected);
   }
 
   function renderValue(): string[] {

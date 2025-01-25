@@ -3,7 +3,7 @@ package site.mohememd.CarsBackend.entity.carStatus;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import site.mohememd.CarsBackend.carFilterProvider.DTO.GET.FilterOptionDTO;
+import site.mohememd.CarsBackend.carFilterProvider.DTO.GetFilterOptionEndpoint.FilterOptionDTO;
 import site.mohememd.CarsBackend.carFilterProvider.interfaces.FilterOption;
 
 import java.util.List;

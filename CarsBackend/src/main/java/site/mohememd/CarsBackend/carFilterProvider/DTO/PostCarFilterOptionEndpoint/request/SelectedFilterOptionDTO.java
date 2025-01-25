@@ -1,4 +1,4 @@
-package site.mohememd.CarsBackend.carFilterProvider.DTO.POST;
+package site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.request;
 
 import lombok.Builder;
 import lombok.Data;

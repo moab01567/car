@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import site.mohememd.CarsBackend.carFilterProvider.DTO.GET.CarAvailableDTO;
-import site.mohememd.CarsBackend.carFilterProvider.DTO.GET.SelectFilterDTO;
-import site.mohememd.CarsBackend.carFilterProvider.DTO.POST.SelectedFilterOptionDTO;
+import site.mohememd.CarsBackend.carFilterProvider.DTO.GetCarAvailableEndpoint.CarAvailableDTO;
+import site.mohememd.CarsBackend.carFilterProvider.DTO.GetFilterOptionEndpoint.SelectFilterDTO;
+import site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.response.CarRegDTO;
+import site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.request.SelectedFilterOptionDTO;
+import site.mohememd.CarsBackend.carFilterProvider.enums.SelectorFilterCode;
 
 import java.util.List;
 @RequestMapping("/car/filter")
@@ -29,12 +31,12 @@ public class CarFilterController {
     @GetMapping("/{carTypeId}/{filterCode}")
     public ResponseEntity<SelectFilterDTO> getCarFiltersAndOptionsByCarId(@PathVariable int carTypeId, @PathVariable String filterCode){
         ValidateCarFilterEndpoint.validateCarFilterCode(filterCode);
-        return new ResponseEntity<>(carFilterService2.getFiltersAndFilterOptions(carTypeId, FilterCode.valueOf(filterCode)), HttpStatus.OK);
+        return new ResponseEntity<>(carFilterService2.getFiltersAndFilterOptions(carTypeId, SelectorFilterCode.valueOf(filterCode)), HttpStatus.OK);
     }
 
     @PostMapping("/options")
-    public ResponseEntity<SelectedFilterOptionDTO> addCarFilter(@RequestBody List<SelectedFilterOptionDTO> selectedFilterOptionDTO){
-        return new ResponseEntity<SelectedFilterOptionDTO>(HttpStatus.OK);
+    public ResponseEntity<List<CarRegDTO>> addCarFilter(@RequestBody List<SelectedFilterOptionDTO> selectedFilterOptionDTO){
+        return new ResponseEntity<List<CarRegDTO>>(carFilterService2.filterCars(selectedFilterOptionDTO),HttpStatus.OK);
     }
 }
 

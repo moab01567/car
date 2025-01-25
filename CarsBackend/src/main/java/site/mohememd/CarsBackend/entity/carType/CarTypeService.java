@@ -2,7 +2,7 @@ package site.mohememd.CarsBackend.entity.carType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import site.mohememd.CarsBackend.carFilterProvider.DTO.GET.CarAvailableDTO;
+import site.mohememd.CarsBackend.carFilterProvider.DTO.GetCarAvailableEndpoint.CarAvailableDTO;
 import site.mohememd.CarsBackend.carFilterProvider.interfaces.AvailableCars;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package site.mohememd.CarsBackend.carFilterProvider.DTO.GET;
+package site.mohememd.CarsBackend.carFilterProvider.DTO.GetCarAvailableEndpoint;
 
 import lombok.Builder;
 import lombok.Data;

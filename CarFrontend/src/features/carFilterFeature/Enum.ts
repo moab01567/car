@@ -16,3 +16,8 @@ export enum DateFilterCode {
   REG_FROM,
   REG_TO,
 }
+
+export enum SortFilterCode {
+  EU,
+  FOLLOW_UP
+}

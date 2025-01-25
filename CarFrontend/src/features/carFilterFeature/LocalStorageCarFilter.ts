@@ -11,98 +11,90 @@ export interface FilterOption {
   }[];
 }
 
-function getFilterDataKey(){
-  return StorageKey[StorageKey.FILTER_DATA]
-}
 
-const filterData: Record<number, FilterOption> =
-  localStorage.getItem(getFilterDataKey()) != null
-    ? JSON.parse(
-        localStorage.getItem(getFilterDataKey()) as string,
-      )
-    : {};
+export class LocalStorageCarFilter{
 
-function setFilterDataToLocalStorage() {
-  localStorage.setItem(
-    getFilterDataKey(),
-    JSON.stringify(filterData),
-  );
-}
+  private static  filterData: Record<number, FilterOption> = localStorage.getItem(StorageKey[StorageKey.FILTER_DATA]) != null? JSON.parse(localStorage.getItem(StorageKey[StorageKey.FILTER_DATA]) as string) : {};
 
-export function addCarToFilterData(carId: number) {
-  if (!filterData[carId]) {
-    filterData[carId] = { selectFilters: [], dateFilters: [] };
+  static getFilterDate(): Record<number, FilterOption> {
+    return LocalStorageCarFilter.filterData
   }
-  setFilterDataToLocalStorage();
-}
-
-export function updateSelectedDate(
-  carId: number,
-  dateFilterCode: DateFilterCode,
-  date: string,
-) {
-  filterData[carId].dateFilters.forEach((dateFilter) =>
-    dateFilter.filterCode === dateFilterCode
-      ? (dateFilter.selectedDate = date)
-      : dateFilter,
-  );
-  setFilterDataToLocalStorage();
-}
-
-export function getSelectedDate(
-  carId: number,
-  dateFilterCode: DateFilterCode,
-): string {
-  const dateFilter:
-    | { filterCode: DateFilterCode; selectedDate: string }
-    | undefined = filterData[carId].dateFilters.find(
-    (dateFilter) => dateFilter.filterCode === dateFilterCode,
-  );
-
-  if (!dateFilter) {
-    filterData[carId].dateFilters.push({
-      filterCode: dateFilterCode,
-      selectedDate: "",
-    });
-    setFilterDataToLocalStorage();
-    return "";
+  static setFilterDataToLocalStorage():void {
+    localStorage.setItem(StorageKey[StorageKey.FILTER_DATA], JSON.stringify(LocalStorageCarFilter.filterData));
   }
-  return dateFilter.selectedDate;
-}
 
-export function updateSelectedData(
-  carId: number,
-  selectFilterCode: SelectFilterCode,
-  selectedOptionIds: number[],
-) {
-  filterData[carId].selectFilters.forEach((selectFilter) =>
-    selectFilter.filterCode === selectFilterCode
-      ? (selectFilter.selectedOptions = selectedOptionIds)
-      : selectFilter,
-  );
-  setFilterDataToLocalStorage();
-}
-
-export function getSelectedData(
-  carId: number,
-  selectFilterCode: SelectFilterCode,
-): number[] {
-  const selectedFilter:
-    | { filterCode: SelectFilterCode; selectedOptions: number[] }
-    | undefined = filterData[carId].selectFilters.find(
-    (selectFilter) => selectFilter.filterCode === selectFilterCode,
-  );
-  if (!selectedFilter) {
-    filterData[carId].selectFilters.push({
-      filterCode: selectFilterCode,
-      selectedOptions: [],
-    });
-    setFilterDataToLocalStorage();
-    return [];
+  static addCarToFilterData(carId: number) {
+    if (!LocalStorageCarFilter.filterData[carId]) {
+      LocalStorageCarFilter.filterData[carId] = { selectFilters: [], dateFilters: [] };
+    }
+    LocalStorageCarFilter.setFilterDataToLocalStorage();
   }
-  return selectedFilter.selectedOptions;
+
+  static updateSelectedDate(
+      carId: number,
+      dateFilterCode: DateFilterCode,
+      date: string,
+  ) {
+    LocalStorageCarFilter.filterData[carId].dateFilters.forEach((dateFilter) =>
+        dateFilter.filterCode === dateFilterCode
+            ? (dateFilter.selectedDate = date)
+            : dateFilter,
+    );
+    LocalStorageCarFilter.setFilterDataToLocalStorage();
+  }
+
+  static getSelectedDate(
+      carId: number,
+      dateFilterCode: DateFilterCode,
+  ): string {
+    const dateFilter:
+        | { filterCode: DateFilterCode; selectedDate: string }
+        | undefined = LocalStorageCarFilter.filterData[carId].dateFilters.find(
+        (dateFilter) => dateFilter.filterCode === dateFilterCode,
+    );
+    if (!dateFilter) {
+      LocalStorageCarFilter.filterData[carId].dateFilters.push({
+        filterCode: dateFilterCode,
+        selectedDate: "",
+      });
+      LocalStorageCarFilter.setFilterDataToLocalStorage();
+      return "";
+    }
+    return dateFilter.selectedDate;
+  }
+
+  static updateSelectedData(
+      carId: number,
+      selectFilterCode: SelectFilterCode,
+      selectedOptionIds: number[],
+  ) {
+    LocalStorageCarFilter.filterData[carId].selectFilters.forEach((selectFilter) =>
+        selectFilter.filterCode === selectFilterCode
+            ? (selectFilter.selectedOptions = selectedOptionIds)
+            : selectFilter,
+    );
+    LocalStorageCarFilter.setFilterDataToLocalStorage();
+  }
+
+  static getSelectedData(
+      carId: number,
+      selectFilterCode: SelectFilterCode,
+  ): number[] {
+    const selectedFilter:
+        | { filterCode: SelectFilterCode; selectedOptions: number[] }
+        | undefined = LocalStorageCarFilter.filterData[carId].selectFilters.find(
+        (selectFilter) => selectFilter.filterCode === selectFilterCode,
+    );
+    if (!selectedFilter) {
+      LocalStorageCarFilter.filterData[carId].selectFilters.push({
+        filterCode: selectFilterCode,
+        selectedOptions: [],
+      });
+      LocalStorageCarFilter.setFilterDataToLocalStorage();
+      return [];
+    }
+    return selectedFilter.selectedOptions;
+  }
 }
 
-export function getFilterDate(): Record<number, FilterOption>{
-  return filterData
-}
+

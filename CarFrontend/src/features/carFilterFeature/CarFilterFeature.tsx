@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { CarFilter } from "./carFilter/CarFilter";
-import {APIGetAvailableCars, APIPostCarFilterAndOptions} from "./service/CarFilterService";
+import {FilterAPI} from "./service/CarFilterService";
 import CarFilterStyle from "./CarFilterFeature.module.css";
 import Button from "@mui/material/Button";
 import "./LocalStorageCarFilter";
-import {addCarToFilterData, getFilterDate} from "./LocalStorageCarFilter";
+import { LocalStorageCarFilter} from "./LocalStorageCarFilter";
 
 import {CarDTO} from "./DTO/CarDTO";
 import {SelectedFilterOptionDTOMapper} from "./DTO/SelectedFilterOptionDTOAndMapper";
+import {FilterSortBy} from "./FilterSortBy/FilterSortBy";
 
 function handleFilterClick() {
 
-    APIPostCarFilterAndOptions(SelectedFilterOptionDTOMapper(getFilterDate()))
+    FilterAPI.APIPostCarFilterAndOptions(SelectedFilterOptionDTOMapper(LocalStorageCarFilter.getFilterDate()))
 }
 
 export function CarFilterFeature() {
@@ -22,9 +23,9 @@ export function CarFilterFeature() {
   }, []);
 
   async function getCarsToFilter() {
-    const cars: CarDTO[] = await APIGetAvailableCars();
+    const cars: CarDTO[] = await FilterAPI.APIGetAvailableCars();
     setCars(cars);
-    cars.forEach((car) => addCarToFilterData(car.carId));
+    cars.forEach((car) => LocalStorageCarFilter.addCarToFilterData(car.carId));
   }
 
   if (carFilters === null) {
@@ -44,6 +45,7 @@ export function CarFilterFeature() {
           <CarFilter key={carFilter.carId} carFilter={carFilter}></CarFilter>
         ))}
       </div>
+       <FilterSortBy></FilterSortBy>
       <Button onClick={handleFilterClick} variant="contained">Filter</Button>
     </div>
   );
