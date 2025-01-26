@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import site.mohememd.CarsBackend.carFilterProvider.DTO.GetCarAvailableEndpoint.CarAvailableDTO;
 import site.mohememd.CarsBackend.carFilterProvider.DTO.GetFilterOptionEndpoint.SelectFilterDTO;
+import site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.request.RequestMainCarFilterOptionDTO;
 import site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.response.CarRegDTO;
 import site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.request.SelectedFilterOptionDTO;
 import site.mohememd.CarsBackend.carFilterProvider.enums.SelectorFilterCode;
@@ -35,7 +36,7 @@ public class CarFilterController {
     }
 
     @PostMapping("/options")
-    public ResponseEntity<List<CarRegDTO>> addCarFilter(@RequestBody List<SelectedFilterOptionDTO> selectedFilterOptionDTO){
+    public ResponseEntity<List<CarRegDTO>> addCarFilter(@RequestBody RequestMainCarFilterOptionDTO selectedFilterOptionDTO){
         return new ResponseEntity<List<CarRegDTO>>(carFilterService2.filterCars(selectedFilterOptionDTO),HttpStatus.OK);
     }
 }

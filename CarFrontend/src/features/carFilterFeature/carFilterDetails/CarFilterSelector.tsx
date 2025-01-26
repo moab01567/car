@@ -6,7 +6,8 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import {LocalStorageCarFilter} from "../LocalStorageCarFilter";
 import { SelectFilterCode } from "../Enum";
 
-import {SelectFilterDTOAndMapper} from "../DTO/SelectFilterDTOAndMapper";
+import {SelectFilterDTOAndMapper} from "../service/APIGetCarFilterAndOptions/SelectFilterDTOAndMapper";
+import {APIGetCarFilterAndOptions} from "../service/APIGetCarFilterAndOptions/APIGetCarFilterAndOptions";
 
 interface Props {
   carTypeId: number;
@@ -20,7 +21,7 @@ export function CarFilterSelector({ carTypeId, selectFilterCode }: Props) {
   );
 
   async function getCarFilterAndOption() {
-    const selectFilterDTO: SelectFilterDTOAndMapper = await FilterAPI.APIGetCarFilterAndOptions(
+    const selectFilterDTO: SelectFilterDTOAndMapper = await APIGetCarFilterAndOptions(
       carTypeId,
       selectFilterCode,
     );

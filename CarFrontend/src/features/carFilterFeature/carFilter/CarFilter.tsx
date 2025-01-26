@@ -7,7 +7,7 @@ import Collapse from "@mui/material/Collapse";
 import { CarFilterDetails } from "../carFilterDetails/CarFilterDetails";
 
 
-import {CarDTO} from "../DTO/CarDTO";
+import {CarDTO} from "../service/APIGetAvailableCars/CarDTO";
 
 interface Props {
   carFilter: CarDTO;

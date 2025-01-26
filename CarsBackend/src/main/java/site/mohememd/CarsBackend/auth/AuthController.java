@@ -31,7 +31,7 @@ public class AuthController  {
         String token = serviceAuth.validateUser(userAuth);
         Map<String,String> response = new HashMap<>();
         response.put("message","successful login");
-        response.put("token",token);
+        response.put("token", token);
 
 
         return new ResponseEntity<>(response,HttpStatus.OK);

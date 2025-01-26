@@ -9,7 +9,6 @@ interface CheckBoxSelected {
     label:string;
     selected:boolean
     code:SortFilterCode
-
 }
 
 const checkBoxSelected:CheckBoxSelected[] = [
@@ -17,22 +16,30 @@ const checkBoxSelected:CheckBoxSelected[] = [
     {label:"Follow up",selected:false, code:SortFilterCode.FOLLOW_UP }
 ]
 
-export function FilterSortBy() {
+interface Props{
+    setSelectedFilter:(sortFilterCode:SortFilterCode | null) => void;
+}
+
+export function FilterSortBy({ setSelectedFilter }:Props) {
     const [selectedCheckBoxes, setSelectedCheckBoxes] = useState<CheckBoxSelected[]>(checkBoxSelected)
 
     function handleChange(code: SortFilterCode) {
-        setSelectedCheckBoxes(selectedCheckBoxes.map(setSelectedCheckBox=> {
-            if (setSelectedCheckBox.code === code)setSelectedCheckBox.selected =  !setSelectedCheckBox.selected
-            else setSelectedCheckBox.selected = false
-            return setSelectedCheckBox
+        setSelectedCheckBoxes(selectedCheckBoxes.map(selectedCheckBox=> {
+            if (selectedCheckBox.code === code) selectedCheckBox.selected =  !selectedCheckBox.selected
+            else selectedCheckBox.selected = false
+
+            if (selectedCheckBox.code === code && !selectedCheckBox.selected ) setSelectedFilter(null);
+            if (selectedCheckBox.code === code && selectedCheckBox.selected ) setSelectedFilter(code);
+
+            return selectedCheckBox
         }))
     }
 
     return <div className={style.SortingByDiv}>
         <h2>Sort by</h2>
         <div className={style.SortingByDiv2}>
-            {selectedCheckBoxes.map(setSelectedCheckBox=><FormControlLabel control={<Checkbox checked={setSelectedCheckBox.selected}/>}
-                                                                           label={setSelectedCheckBox.label} onChange={event=> handleChange(setSelectedCheckBox.code)}/>)}
+            {selectedCheckBoxes.map(SelectedCheckBox=><FormControlLabel key={SelectedCheckBox.code} control={<Checkbox checked={SelectedCheckBox.selected}/>}
+                                                                        label={SelectedCheckBox.label} onChange={event=> handleChange(SelectedCheckBox.code)}/>)}
         </div>
     </div>
 }

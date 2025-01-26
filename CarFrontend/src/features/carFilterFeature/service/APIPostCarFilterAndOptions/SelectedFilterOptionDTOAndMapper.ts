@@ -1,5 +1,10 @@
-import {DateFilterCode, SelectFilterCode} from "../Enum";
-import {FilterOption} from "../LocalStorageCarFilter";
+import {DateFilterCode, SelectFilterCode, SortFilterCode} from "../../Enum";
+import {FilterOption} from "../../LocalStorageCarFilter";
+
+export interface APIPostCarFilterAndOptionsDTO{
+    sortCode:string |null;
+    selectedFilterOptions:SelectedFilterOptionDTO[];
+}
 
 export interface SelectedFilterOptionDTO {
     carId: number;
@@ -13,9 +18,11 @@ export interface SelectedFilterOptionDTO {
     }[];
 }
 
-export function SelectedFilterOptionDTOMapper(filterData:Record<number, FilterOption>):SelectedFilterOptionDTO[]{
+export function CarFilterAndOptionMapper(sortFilterCode:SortFilterCode | null, filterData:Record<number, FilterOption>):APIPostCarFilterAndOptionsDTO{
     const carIds:number[] =  Object.keys(filterData).map(key=> Number.parseInt(key))
-    return carIds.map(carIdKey => {
+
+
+    const selectedFilterOptionDTOs: SelectedFilterOptionDTO[] = carIds.map(carIdKey => {
        return {
            carId: carIdKey,
            selectFilters: filterData[carIdKey].selectFilters.map(selectFilter => (
@@ -23,5 +30,7 @@ export function SelectedFilterOptionDTOMapper(filterData:Record<number, FilterOp
            dateFilters: filterData[carIdKey].dateFilters.map(dateFilter => (
                {filterCode: DateFilterCode[dateFilter.filterCode], selectedDate: dateFilter.selectedDate}))
        }
+
    })
+    return {sortCode:sortFilterCode !== null ? SortFilterCode[sortFilterCode] : null, selectedFilterOptions:selectedFilterOptionDTOs}
 }

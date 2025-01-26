@@ -3,8 +3,8 @@ package site.mohememd.CarsBackend.entity.car;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.request.RequestMainCarFilterOptionDTO;
 import site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.response.CarRegDTO;
-import site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.request.SelectedFilterOptionDTO;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class CarService{
         this.jooqRepo = jooqRepo;
     }
 
-    public List<CarRegDTO> filterCars(List<SelectedFilterOptionDTO> selectedFilterOptionDTO){
+    public List<CarRegDTO> filterCars(RequestMainCarFilterOptionDTO selectedFilterOptionDTO){
         return jooqRepo.filterCars(selectedFilterOptionDTO);
     }
 

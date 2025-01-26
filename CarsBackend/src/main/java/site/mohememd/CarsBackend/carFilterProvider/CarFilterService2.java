@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import site.mohememd.CarsBackend.carFilterProvider.DTO.GetCarAvailableEndpoint.CarAvailableDTO;
 import site.mohememd.CarsBackend.carFilterProvider.DTO.GetFilterOptionEndpoint.FilterOptionDTO;
 import site.mohememd.CarsBackend.carFilterProvider.DTO.GetFilterOptionEndpoint.SelectFilterDTO;
+import site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.request.RequestMainCarFilterOptionDTO;
 import site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.response.CarRegDTO;
 import site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.request.SelectedFilterOptionDTO;
 import site.mohememd.CarsBackend.carFilterProvider.enums.SelectorFilterCode;
@@ -47,8 +48,8 @@ public class CarFilterService2 {
     }
 
 
-    public List<CarRegDTO> filterCars(List<SelectedFilterOptionDTO> selectedFilterOptionDTO) {
-        return carService.filterCars(selectedFilterOptionDTO);
+    public List<CarRegDTO> filterCars(RequestMainCarFilterOptionDTO requestMainCarFilterOptionDTO) {
+        return carService.filterCars(requestMainCarFilterOptionDTO);
     }
 
     public SelectFilterDTO getFiltersAndFilterOptions(int carTypeId, SelectorFilterCode selectedFilterCode) {

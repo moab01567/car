@@ -3,6 +3,7 @@ package site.mohememd.CarsBackend.entity.car;
 import org.jooq.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.request.RequestMainCarFilterOptionDTO;
 import site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.response.CarRegDTO;
 import site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.request.DateFilterDTO;
 import site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.request.SelectFilterDTO;
@@ -21,10 +22,10 @@ public class JooqRepository {
         this.create = create;
     }
 
-    public List<CarRegDTO> filterCars(List<SelectedFilterOptionDTO> selectedFilterOptionDTO) {
+    public List<CarRegDTO> filterCars(RequestMainCarFilterOptionDTO requestMainCarFilterOptionDTO) {
         SelectConditionStep<Record4<Integer, String,String,String>> query = createWithNoResult();
 
-        for (SelectedFilterOptionDTO filterOptionDTO : selectedFilterOptionDTO) {
+        for (SelectedFilterOptionDTO filterOptionDTO : requestMainCarFilterOptionDTO.getSelectedFilterOptions()) {
             SelectConditionStep<Record4<Integer, String,String,String>>  carQuery = create
                     .select(CarTable.CAR_ID, CarTable.REG,CarTable.NEXT_EU_CONTROL,CarTable.FOLLOW_UP)
                     .from(CarTable.TABLE)
@@ -34,7 +35,11 @@ public class JooqRepository {
            query.unionAll(carQuery);
         }
 
-        query.orderBy(CarTable.NEXT_EU_CONTROL);
+        switch (requestMainCarFilterOptionDTO.getSortCode()){
+            case EU -> query.orderBy(CarTable.NEXT_EU_CONTROL);
+            case FOLLOW_UP -> query.orderBy(CarTable.FOLLOW_UP);
+        }
+
         query.limit(10);
         System.out.println(query);
         List<CarRegDTO> carRegDTOs = query.fetch().map(record -> new CarRegDTO(record.component1(),record.component2()));
