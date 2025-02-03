@@ -1,6 +1,6 @@
 # Maven target directory
 target/
-
+ApplicationNoSecurity.java
 # Logs
 *.log
 logs/
