@@ -1,6 +1,5 @@
 package site.mohememd.CarsBackend.carFilterProvider;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +8,6 @@ import site.mohememd.CarsBackend.carFilterProvider.DTO.GetCarAvailableEndpoint.C
 import site.mohememd.CarsBackend.carFilterProvider.DTO.GetFilterOptionEndpoint.SelectFilterDTO;
 import site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.request.RequestMainCarFilterOptionDTO;
 import site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.response.CarRegDTO;
-import site.mohememd.CarsBackend.carFilterProvider.DTO.PostCarFilterOptionEndpoint.request.SelectedFilterOptionDTO;
 import site.mohememd.CarsBackend.carFilterProvider.enums.SelectorFilterCode;
 
 import java.util.List;

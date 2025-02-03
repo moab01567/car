@@ -1,4 +1,4 @@
-package site.mohememd.CarsBackend.auth;
+package site.mohememd.CarsBackend.auth.JWT;
 
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;

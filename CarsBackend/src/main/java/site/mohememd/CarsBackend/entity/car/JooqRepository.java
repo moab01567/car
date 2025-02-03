@@ -35,9 +35,14 @@ public class JooqRepository {
            query.unionAll(carQuery);
         }
 
-        switch (requestMainCarFilterOptionDTO.getSortCode()){
-            case EU -> query.orderBy(CarTable.NEXT_EU_CONTROL);
-            case FOLLOW_UP -> query.orderBy(CarTable.FOLLOW_UP);
+        if (requestMainCarFilterOptionDTO.getSortCode() != null){
+            switch (requestMainCarFilterOptionDTO.getSortCode()){
+                case EU -> query.orderBy(CarTable.NEXT_EU_CONTROL);
+                case FOLLOW_UP -> query.orderBy(CarTable.FOLLOW_UP);
+                default -> {
+                    break;
+                }
+            }
         }
 
         query.limit(10);

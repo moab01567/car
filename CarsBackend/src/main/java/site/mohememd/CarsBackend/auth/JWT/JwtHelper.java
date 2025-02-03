@@ -1,4 +1,4 @@
-package site.mohememd.CarsBackend.auth;
+package site.mohememd.CarsBackend.auth.JWT;
 
 
 import io.jsonwebtoken.*;
