@@ -27,7 +27,6 @@ public class AuthController  {
 
     @PostMapping("/login")
     public ResponseEntity<?> authLogin(@RequestBody UserAuth userAuth){
-        System.out.println(SecurityContextHolder.getContext().getAuthentication().isAuthenticated());
         String token = serviceAuth.validateUser(userAuth);
         Map<String,String> response = new HashMap<>();
         response.put("message","successful login");
